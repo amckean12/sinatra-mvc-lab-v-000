@@ -1,6 +1,6 @@
 class PigLatinizer
   attr_reader :text
-  attr_accessor :result
+  attr_accessor :result, :pigResult
 
   @@vowels = ["a", "e", "i", "o", "u"]
   @@twoLetterConst = ["ch", "sh", "qu", "th", "br"]
