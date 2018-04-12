@@ -3,11 +3,19 @@ class PigLatinizer
 
   def initialize(text)
     @text = text.downcase
+  end
+
+  def phraseToPigLatin
+    parseInputedPhrase
+    pigLatinTranslate
+    createPigLatinPhrase
+    
   end 
+  
   
   def parseInputedPhrase
     @words = @text.split(/\W+/)
-  end 
+  end
 
   def pigLatinTranslate
     @words.map! do |word|
@@ -18,10 +26,11 @@ class PigLatinizer
         word = match.post_match + match.to_s + 'ay'
       end
       word
-    end 
+    end
   end
 
   def createPigLatinPhrase
-    @words.join(" ")
-  end   
+    phrase = @words.join(" ")
+    puts "#{phrase}"
+  end
 end
