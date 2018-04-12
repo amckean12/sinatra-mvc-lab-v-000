@@ -4,14 +4,10 @@ class PigLatinizer
 
   def initialize(text)
     @text = text.downcase
-  end
-
-  def phraseToPigLatin
     parseInputedPhrase
     pigLatinTranslate
     createPigLatinPhrase
   end
-
 
   def parseInputedPhrase
     @words = @text.split(/\W+/)
