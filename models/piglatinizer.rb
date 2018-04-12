@@ -1,32 +1,37 @@
 class PigLatinizer
   attr_reader :text
-  attr_accessor :words
+  attr_accessor 
+
+  @@vowels = ["a", "e", "i", "o", "u"]
+  @@twoLetterConst = ["ch", "sh", "qu", "th", "br"]
+  @@threeLetterConst = ["thr", "sch", "squ"]
+  
 
   def initialize(text)
-    @text = text.downcase
-    parseInputedPhrase
-    pigLatinTranslate
-    createPigLatinPhrase
-  end
-
-  def parseInputedPhrase
-    @words = @text.split(/\W+/)
+    @text = text.split(" ")
   end
 
   def pigLatinTranslate
-    @words.map! do |word|
-      if word =~(/\A[aeiou]/i)
-        word = word + 'ay'
-      elsif word =~ (/\A[^aeiou]/i)
-        match = /\A[^aeiou]/i.match(word)
-        word = match.post_match + match.to_s + 'ay'
-      end
-      word
-    end
+    @result = []
+    @text.each do |word|
+      if @@vowels.include? word[0]
+        result.push word << 'ay'
+      else 
+        if @@twoLetterConst.include? word[0] + word[1] + word[2]
+          firstThreeLetters = word.slice!(0,3)
+          result.push word << firstThreeLetters << 'ay'
+        elsif twoLetterConst.include? word[0] + word[1]
+          firstTwoLetters = word.slice!(0,2)
+          resul.push word << firstTwoLetters << 'ay'
+        else 
+          firstLetter = word.slice!(0)
+          result.push word << firstLetter << 'ay'
+        end 
+      end 
+    end 
+      return result.join(" ")    
   end
 
   def createPigLatinPhrase
-    phrase = @words.join(" ")
-    puts "#{phrase}"
   end
 end
