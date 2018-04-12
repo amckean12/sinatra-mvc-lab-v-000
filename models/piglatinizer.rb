@@ -1,0 +1,27 @@
+class PigLatinizer
+  attr_reader :text, :words
+
+  def initialize(text)
+    @text = text.downcase
+  end 
+  
+  def parseInputedPhrase
+    @words = @text.split(/\W+/)
+  end 
+
+  def pigLatinTranslate
+    @words.map! do |word|
+      if word =~(/\A[aeiou]/i)
+        word = word + 'ay'
+      elsif word =~ (/\A[^aeiou]/i)
+        match = /\A[^aeiou]/i.match(word)
+        word = match.post_match + match.to_s + 'ay'
+      end
+      word
+    end 
+  end
+
+  def createPigLatinPhrase
+    @words.join(" ")
+  end   
+end
