@@ -9,6 +9,7 @@ class PigLatinizer
 
   def initialize(text)
     @text = text.split(" ")
+    pigLatinTranslate
   end
 
   def pigLatinTranslate
