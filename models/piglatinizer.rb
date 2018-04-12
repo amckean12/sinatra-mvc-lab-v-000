@@ -30,5 +30,6 @@ class PigLatinizer
       end
     end
       @pigResult = @result.join(" ")
+      return @pigResult
   end
 end
