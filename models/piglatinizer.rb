@@ -9,10 +9,9 @@ class PigLatinizer
     parseInputedPhrase
     pigLatinTranslate
     createPigLatinPhrase
-    
-  end 
-  
-  
+  end
+
+
   def parseInputedPhrase
     @words = @text.split(/\W+/)
   end
